@@ -1,1 +1,1 @@
-data class Locations()
+data class Locations(val id: String)

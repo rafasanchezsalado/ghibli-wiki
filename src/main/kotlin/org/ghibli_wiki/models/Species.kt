@@ -1,1 +1,1 @@
-data class Species()
+data class Species(val id: String)

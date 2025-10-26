@@ -1,1 +1,1 @@
-data class Film()
+data class Film(val id: String)

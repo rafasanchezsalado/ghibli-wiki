@@ -1,1 +1,1 @@
-data class People()
+data class People(val id: String)

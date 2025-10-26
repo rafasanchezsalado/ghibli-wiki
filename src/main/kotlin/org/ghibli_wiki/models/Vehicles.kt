@@ -1,1 +1,1 @@
-data class Vehicles()
+data class Vehicles(val id: String)
