@@ -1,0 +1,1 @@
+data class Location(val id: String)

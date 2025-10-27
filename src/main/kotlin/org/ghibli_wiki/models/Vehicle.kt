@@ -1,0 +1,1 @@
+data class Vehicle(val id: String)
