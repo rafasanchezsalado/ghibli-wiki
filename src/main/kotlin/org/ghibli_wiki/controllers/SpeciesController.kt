@@ -1,21 +1,21 @@
 package org.ghibli_wiki.controllers
 
 import Species
+import org.ghibli_wiki.services.GhibliService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class SpeciesController {
-    var species = arrayOf(Species("123"), Species("456"))
+class SpeciesController(val ghibliService: GhibliService) {
 
     @GetMapping("/species/{id}")
-    fun getSpeciesById(@PathVariable(required = true) id: Int): Species {
-        return species[id]
+    suspend fun getSpeciesById(@PathVariable(required = true) id: Int): Species {
+        return ghibliService.getSpecies()[0]
     }
 
     @GetMapping("/species")
-    fun getAllSpecies(): Array<Species> {
-        return species
+    suspend fun getAllSpecies(): List<Species> {
+        return ghibliService.getSpecies()
     }
 }

@@ -1,21 +1,21 @@
 package org.ghibli_wiki.controllers
 
 import People
+import org.ghibli_wiki.services.GhibliService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class PeopleController {
-    var people = arrayOf(People("123"), People("456"))
+class PeopleController(val ghibliService: GhibliService) {
 
     @GetMapping("/people/{id}")
-    fun getPeopleById(@PathVariable(required = true) id: Int): People {
-        return people[id]
+    suspend fun getPeopleById(@PathVariable(required = true) id: Int): People {
+        return return ghibliService.getPeople()[0]
     }
 
     @GetMapping("/people")
-    fun getAllPeople(): Array<People> {
-        return people
+    suspend fun getAllPeople(): List<People> {
+        return ghibliService.getPeople()
     }
 }
