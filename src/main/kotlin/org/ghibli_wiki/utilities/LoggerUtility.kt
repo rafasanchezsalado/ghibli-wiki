@@ -4,31 +4,31 @@ class LoggerUtility {
 
     private val logger: System.Logger = System.getLogger(this::class.java.name)
 
-    fun logInfo(msg: String): Unit {
+    fun logInfo(msg: String) {
         return logger.log(System.Logger.Level.INFO, msg)
     }
 
-    fun logAll(msg: String): Unit {
+    fun logAll(msg: String) {
         return logger.log(System.Logger.Level.ALL, msg)
     }
 
-    fun logOff(msg: String): Unit {
+    fun logOff(msg: String) {
         return logger.log(System.Logger.Level.OFF, msg)
     }
 
-    fun logDebug(msg: String): Unit {
+    fun logDebug(msg: String) {
         return logger.log(System.Logger.Level.DEBUG, msg)
     }
 
-    fun logError(msg: String): Unit {
+    fun logError(msg: String) {
         return logger.log(System.Logger.Level.ERROR, msg)
     }
 
-    fun logTrace(msg: String): Unit {
+    fun logTrace(msg: String) {
         return logger.log(System.Logger.Level.TRACE, msg)
     }
 
-    fun logWarning(msg: String): Unit {
+    fun logWarning(msg: String) {
         return logger.log(System.Logger.Level.WARNING, msg)
     }
 

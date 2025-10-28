@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class GhibliWikiApplication
 
 fun main(args: Array<String>) {
-	runApplication<GhibliWikiApplication>(*args)
+    runApplication<GhibliWikiApplication>(*args)
 }

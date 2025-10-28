@@ -11,7 +11,7 @@ class PeopleController(val ghibliService: GhibliService) {
 
     @GetMapping("/people/{id}")
     suspend fun getPeopleById(@PathVariable(required = true) id: Int): People {
-        return return ghibliService.getPeople()[0]
+        return ghibliService.getPeople()[0]
     }
 
     @GetMapping("/people")
