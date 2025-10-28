@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController
 class VehiclesController(val ghibliService: GhibliService) {
 
     @GetMapping("/vehicles/{id}")
-    suspend fun getVehicleById(@PathVariable(required = true) id: Int): Vehicle {
-        return ghibliService.getVehicles()[0]
+    suspend fun getVehicleById(@PathVariable(required = true) id: String): Vehicle {
+        return ghibliService.getVehicleById(id)
     }
 
     @GetMapping("/vehicles")
-    suspend fun getAllVehicles(): List<Vehicle> {
+    suspend fun getVehicles(): List<Vehicle> {
         return ghibliService.getVehicles()
     }
 }

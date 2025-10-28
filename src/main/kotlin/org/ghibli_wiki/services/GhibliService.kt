@@ -28,6 +28,30 @@ class GhibliService(@param:Value("\${app.services.ghibli.base_url}") private val
             .bodyToFlux(modelClass).collectList().awaitSingle()
     }
 
+    //
+
+    suspend fun getFilmById(id: String): Film {
+        return this.retrieveData("$filmsUrl/$id", Film::class.java)[0]
+    }
+
+    suspend fun getLocationById(id: String): Location {
+        return this.retrieveData("$locationUrl/$id", Location::class.java)[0]
+    }
+
+    suspend fun getPeopleById(id: String): People {
+        return this.retrieveData("$peopleUrl/$id", People::class.java)[0]
+    }
+
+    suspend fun getSpeciesById(id: String): Species {
+        return this.retrieveData("$speciesUrl/$id", Species::class.java)[0]
+    }
+
+    suspend fun getVehicleById(id: String): Vehicle {
+        return this.retrieveData("$vehicleUrl/$id", Vehicle::class.java)[0]
+    }
+
+    //
+
     suspend fun getFilms(): List<Film> {
         return this.retrieveData(filmsUrl, Film::class.java)
     }

@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController
 class SpeciesController(val ghibliService: GhibliService) {
 
     @GetMapping("/species/{id}")
-    suspend fun getSpeciesById(@PathVariable(required = true) id: Int): Species {
-        return ghibliService.getSpecies()[0]
+    suspend fun getSpeciesById(@PathVariable(required = true) id: String): Species {
+        return ghibliService.getSpeciesById(id)
     }
 
     @GetMapping("/species")
-    suspend fun getAllSpecies(): List<Species> {
+    suspend fun getSpecies(): List<Species> {
         return ghibliService.getSpecies()
     }
 }

@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController
 class LocationsController(val ghibliService: GhibliService) {
 
     @GetMapping("/locations/{id}")
-    suspend fun getLocationById(@PathVariable(required = true) id: Int): Location {
-        return ghibliService.getLocations()[0]
+    suspend fun getLocationById(@PathVariable(required = true) id: String): Location {
+        return ghibliService.getLocationById(id)
     }
 
     @GetMapping("/locations")
-    suspend fun getAllLocations(): List<Location> {
+    suspend fun getLocations(): List<Location> {
         return ghibliService.getLocations()
     }
 }

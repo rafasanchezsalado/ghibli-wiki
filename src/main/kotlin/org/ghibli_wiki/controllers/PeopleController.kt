@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController
 class PeopleController(val ghibliService: GhibliService) {
 
     @GetMapping("/people/{id}")
-    suspend fun getPeopleById(@PathVariable(required = true) id: Int): People {
-        return ghibliService.getPeople()[0]
+    suspend fun getPeopleById(@PathVariable(required = true) id: String): People {
+        return ghibliService.getPeopleById(id)
     }
 
     @GetMapping("/people")
-    suspend fun getAllPeople(): List<People> {
+    suspend fun getPeople(): List<People> {
         return ghibliService.getPeople()
     }
 }

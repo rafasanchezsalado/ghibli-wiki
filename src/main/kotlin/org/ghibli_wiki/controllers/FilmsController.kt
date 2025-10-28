@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController
 class FilmsController(val ghibliService: GhibliService) {
 
     @GetMapping("/films/{id}")
-    suspend fun getFilmById(@PathVariable(required = true) id: Int): Film {
-        return ghibliService.getFilms()[0]
+    suspend fun getFilmById(@PathVariable(required = true) id: String): Film {
+        return ghibliService.getFilmById(id)
     }
 
     @GetMapping("/films")
-    suspend fun getAllFilms(): List<Film> {
+    suspend fun getFilms(): List<Film> {
         return ghibliService.getFilms()
     }
 }
