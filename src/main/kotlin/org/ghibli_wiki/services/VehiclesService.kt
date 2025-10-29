@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 @Service
 class VehiclesService(private val service: BaseService) {
 
-    val vehicleUrl: String = "/vehicle"
+    val vehicleUrl: String = "/vehicles"
 
     suspend fun getVehicleById(id: String): Vehicle {
         return service.retrieveData("$vehicleUrl/$id", Vehicle::class.java)[0]
