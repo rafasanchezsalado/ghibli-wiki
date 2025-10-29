@@ -12,6 +12,6 @@ class AppController() {
     @GetMapping("/")
     fun home(): String {
         loggerUtility.logInfo("Request to '/'")
-        return "Hello World"
+        return "Ghibli Wiki"
     }
 }
