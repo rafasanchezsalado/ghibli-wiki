@@ -7,8 +7,8 @@ data class People(
     val name: String,
     val gender: String,
     val age: String,
-    @JsonProperty("eye_color") val eyeColor: String,
-    @JsonProperty("hair_color") val hairColor: String,
+    @param:JsonProperty("eye_color") val eyeColor: String,
+    @param:JsonProperty("hair_color") val hairColor: String,
     val films: List<String>,
     val species: String,
     val url: String

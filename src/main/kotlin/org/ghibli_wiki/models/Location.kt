@@ -7,7 +7,7 @@ data class Location(
     val name: String,
     val climate: String,
     val terrain: String,
-    @JsonProperty("surface_water") val surfaceWater: String,
+    @param:JsonProperty("surface_water") val surfaceWater: String,
     val residents: List<String>,
     val films: List<String>,
     val url: String

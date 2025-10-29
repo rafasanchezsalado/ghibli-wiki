@@ -6,7 +6,7 @@ data class Vehicle(
     val id: String,
     val name: String,
     val description: String,
-    @JsonProperty("vehicle_class") val vehicleClass: String,
+    @param:JsonProperty("vehicle_class") val vehicleClass: String,
     val length: String,
     val pilot: String,
     val films: List<String>,
