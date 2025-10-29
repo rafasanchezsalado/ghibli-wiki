@@ -1,6 +1,6 @@
 package org.ghibli_wiki.services
 
-import Location
+import org.ghibli_wiki.models.Location
 import org.springframework.stereotype.Service
 
 @Service

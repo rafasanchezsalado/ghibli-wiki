@@ -1,6 +1,6 @@
 package org.ghibli_wiki.services
 
-import Species
+import org.ghibli_wiki.models.Species
 import org.springframework.stereotype.Service
 
 @Service

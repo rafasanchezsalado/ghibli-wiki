@@ -1,6 +1,6 @@
 package org.ghibli_wiki.services
 
-import Film
+import org.ghibli_wiki.models.Film
 import org.springframework.stereotype.Service
 
 @Service

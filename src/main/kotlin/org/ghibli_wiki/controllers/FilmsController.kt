@@ -1,6 +1,6 @@
 package org.ghibli_wiki.controllers
 
-import Film
+import org.ghibli_wiki.models.Film
 import org.ghibli_wiki.services.FilmService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

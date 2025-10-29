@@ -1,6 +1,6 @@
 package org.ghibli_wiki.controllers
 
-import Vehicle
+import org.ghibli_wiki.models.Vehicle
 import org.ghibli_wiki.services.VehiclesService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

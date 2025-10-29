@@ -1,6 +1,6 @@
 package org.ghibli_wiki.services
 
-import Vehicle
+import org.ghibli_wiki.models.Vehicle
 import org.springframework.stereotype.Service
 
 @Service

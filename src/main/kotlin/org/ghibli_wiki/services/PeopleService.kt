@@ -1,6 +1,6 @@
 package org.ghibli_wiki.services
 
-import People
+import org.ghibli_wiki.models.People
 import org.springframework.stereotype.Service
 
 @Service
