@@ -16,4 +16,21 @@ class PeopleService(private val service: BaseService) {
         return service.retrieveData(peopleUrl, People::class.java)
     }
 
+    suspend fun filterPeople(field: String, value: String): List<People> {
+        val people = service.retrieveData(peopleUrl, People::class.java)
+        // filter
+        val filteredPeople = people.filter {
+            when (field) {
+                "age" -> it.age.equals(value, true)
+                "eyeColor" -> it.eyeColor.equals(value, true)
+                "gender" -> it.gender.equals(value, true)
+                "hairColor" -> it.hairColor.equals(value, true)
+                "name" -> it.name.equals(value, true)
+                "species" -> it.species.equals(value, true)
+                else -> false
+            }
+        }
+        return filteredPeople
+    }
+
 }

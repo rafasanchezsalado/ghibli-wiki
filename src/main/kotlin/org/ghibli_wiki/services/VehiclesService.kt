@@ -6,14 +6,30 @@ import org.springframework.stereotype.Service
 @Service
 class VehiclesService(private val service: BaseService) {
 
-    val vehicleUrl: String = "/vehicles"
+    val vehiclesUrl: String = "/vehicles"
 
     suspend fun getVehicleById(id: String): Vehicle {
-        return service.retrieveData("$vehicleUrl/$id", Vehicle::class.java)[0]
+        return service.retrieveData("$vehiclesUrl/$id", Vehicle::class.java)[0]
     }
 
     suspend fun getVehicles(): List<Vehicle> {
-        return service.retrieveData(vehicleUrl, Vehicle::class.java)
+        return service.retrieveData(vehiclesUrl, Vehicle::class.java)
+    }
+
+    suspend fun filterVehicles(field: String, value: String): List<Vehicle> {
+        val vehicles = service.retrieveData(vehiclesUrl, Vehicle::class.java)
+        // filter
+        val filteredVehicles = vehicles.filter {
+            when (field) {
+                "classification" -> it.description.equals(value, true)
+                "length" -> it.length.equals(value, true)
+                "name" -> it.name.equals(value, true)
+                // "pilot" -> it.pilot.equals(value, true)
+                "vehicleClass" -> it.vehicleClass.equals(value, true)
+                else -> false
+            }
+        }
+        return filteredVehicles
     }
 
 }
