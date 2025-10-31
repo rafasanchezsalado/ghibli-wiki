@@ -21,15 +21,12 @@ class PeopleController(val service: PeopleService) {
 
     @GetMapping("/people")
     suspend fun getPeople(@RequestParam(required = false) params: Map<String, String>): List<People> {
+        loggerUtility.logInfo("Request to '/people'")
         return if (params.isEmpty()) {
-            loggerUtility.logInfo("Request to '/people'")
             service.getPeople()
         } else {
-            loggerUtility.logInfo("params:$params")
-            val field = params.entries.first().key
-            val value = params.entries.first().value
-            loggerUtility.logInfo("Request to '/people?$field=$value'")
-            service.filterPeople(field, value)
+            loggerUtility.logInfo("filter params:$params")
+            service.filterPeople(params)
         }
     }
 

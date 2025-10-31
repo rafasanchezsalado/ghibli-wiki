@@ -21,15 +21,12 @@ class LocationsController(val service: LocationService) {
 
     @GetMapping("/locations")
     suspend fun getLocations(@RequestParam(required = false) params: Map<String, String>): List<Location> {
+        loggerUtility.logInfo("Request to '/locations'")
         return if (params.isEmpty()) {
-            loggerUtility.logInfo("Request to '/locations'")
             service.getLocations()
         } else {
-            loggerUtility.logInfo("params:$params")
-            val field = params.entries.first().key
-            val value = params.entries.first().value
-            loggerUtility.logInfo("Request to '/locations?$field=$value'")
-            service.filterLocations(field, value)
+            loggerUtility.logInfo("Filter params:$params")
+            service.filterLocations(params)
         }
     }
 }

@@ -16,16 +16,19 @@ class SpeciesService(private val service: BaseService) {
         return service.retrieveData(speciesUrl, Species::class.java)
     }
 
-    suspend fun filterSpecies(field: String, value: String): List<Species> {
-        val species = service.retrieveData(speciesUrl, Species::class.java)
-        // filter
-        val filteredSpecies = species.filter {
-            when (field) {
-                "classification" -> it.classification.equals(value, true)
-                "eyeColors" -> it.eyeColors.equals(value, true)
-                "hairColors" -> it.hairColors.equals(value, true)
-                "name" -> it.name.equals(value, true)
-                else -> false
+    suspend fun filterSpecies(params: Map<String, String>): List<Species> {
+        var filteredSpecies: List<Species> = getSpecies() // all results first, no filters
+        for (param in params) {
+            val field = param.key
+            val value = param.value
+            filteredSpecies = filteredSpecies.filter {
+                when (field) {
+                    "classification" -> it.classification.equals(value, true)
+                    "eyeColors" -> it.eyeColors.equals(value, true)
+                    "hairColors" -> it.hairColors.equals(value, true)
+                    "name" -> it.name.equals(value, true)
+                    else -> false
+                }
             }
         }
         return filteredSpecies

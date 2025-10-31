@@ -16,17 +16,20 @@ class VehiclesService(private val service: BaseService) {
         return service.retrieveData(vehiclesUrl, Vehicle::class.java)
     }
 
-    suspend fun filterVehicles(field: String, value: String): List<Vehicle> {
-        val vehicles = service.retrieveData(vehiclesUrl, Vehicle::class.java)
-        // filter
-        val filteredVehicles = vehicles.filter {
-            when (field) {
-                "classification" -> it.description.equals(value, true)
-                "length" -> it.length.equals(value, true)
-                "name" -> it.name.equals(value, true)
-                // "pilot" -> it.pilot.equals(value, true)
-                "vehicleClass" -> it.vehicleClass.equals(value, true)
-                else -> false
+    suspend fun filterVehicles(params: Map<String, String>): List<Vehicle> {
+        var filteredVehicles: List<Vehicle> = getVehicles() // all results first, no filters
+        for (param in params) {
+            val field = param.key
+            val value = param.value
+            filteredVehicles = filteredVehicles.filter {
+                when (field) {
+                    "classification" -> it.description.equals(value, true)
+                    "length" -> it.length.equals(value, true)
+                    "name" -> it.name.equals(value, true)
+                    // "pilot" -> it.pilot.equals(value, true)
+                    "vehicleClass" -> it.vehicleClass.equals(value, true)
+                    else -> false
+                }
             }
         }
         return filteredVehicles

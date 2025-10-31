@@ -21,15 +21,12 @@ class SpeciesController(val service: SpeciesService) {
 
     @GetMapping("/species")
     suspend fun getSpecies(@RequestParam(required = false) params: Map<String, String>): List<Species> {
+        loggerUtility.logInfo("Request to '/species'")
         return if (params.isEmpty()) {
-            loggerUtility.logInfo("Request to '/species'")
             service.getSpecies()
         } else {
-            loggerUtility.logInfo("params:$params")
-            val field = params.entries.first().key
-            val value = params.entries.first().value
-            loggerUtility.logInfo("Request to '/species?$field=$value'")
-            service.filterSpecies(field, value)
+            loggerUtility.logInfo("Filter params:$params")
+            service.filterSpecies(params)
         }
     }
 

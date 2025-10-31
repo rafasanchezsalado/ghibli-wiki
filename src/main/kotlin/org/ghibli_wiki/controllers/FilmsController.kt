@@ -21,15 +21,12 @@ class FilmsController(val service: FilmService) {
 
     @GetMapping("/films")
     suspend fun getFilms(@RequestParam(required = false) params: Map<String, String>): List<Film> {
+        loggerUtility.logInfo("Request to '/films'")
         return if (params.isEmpty()) {
-            loggerUtility.logInfo("Request to '/films'")
             service.getFilms()
         } else {
-            loggerUtility.logInfo("params:$params")
-            val field = params.entries.first().key
-            val value = params.entries.first().value
-            loggerUtility.logInfo("Request to '/films?$field=$value'")
-            service.filterFilms(field, value)
+            loggerUtility.logInfo("Filter params:$params")
+            service.filterFilms(params)
         }
     }
 }

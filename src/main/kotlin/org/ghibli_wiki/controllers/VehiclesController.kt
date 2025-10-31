@@ -21,15 +21,12 @@ class VehiclesController(val service: VehiclesService) {
 
     @GetMapping("/vehicles")
     suspend fun getVehicles(@RequestParam(required = false) params: Map<String, String>): List<Vehicle> {
+        loggerUtility.logInfo("Request to '/vehicles'")
         return if (params.isEmpty()) {
-            loggerUtility.logInfo("Request to '/vehicles'")
             service.getVehicles()
         } else {
             loggerUtility.logInfo("params:$params")
-            val field = params.entries.first().key
-            val value = params.entries.first().value
-            loggerUtility.logInfo("Request to '/vehicles?$field=$value'")
-            service.filterVehicles(field, value)
+            service.filterVehicles(params)
         }
     }
 
